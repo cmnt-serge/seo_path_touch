@@ -1,0 +1,33 @@
+{
+    "author": "seoxis",
+    "manifest_version": 3,
+    "name": "Dofus maps",
+    "description": "Concepteur de trajet dofus touch",
+    "version": "0.10",
+    "action": {
+      "default_icon": {
+
+      },
+      "default_title": "Click Me"
+    },
+    "background": {
+      "service_worker": "src/js/background.js"
+    },
+    "permissions": [
+      "webNavigation",
+      "activeTab",
+      "scripting",
+      "declarativeContent",
+      "tabs"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["src/js/"],
+        "matches": ["https://www.dofus-touch-map.com/*"]
+      }
+   ],
+    "host_permissions": ["https://www.dofus-touch-map.com/"],
+    "icons": {
+
+    }
+}
