@@ -4,10 +4,10 @@ chrome.webNavigation.onCompleted.addListener(({tabId, url}) => {
         origins: ['https://www.dofus-touch-map.com/']
     }, (granted) => {
         if (granted) {
-            chrome.scripting.executeScript({
+            /* chrome.scripting.executeScript({
                 target: {tabId},
                 files: ['src/js/main.js']
-            });
+            }); */
             chrome.scripting.insertCSS({
                 target: {tabId},
                 files: ['src/css/bootstrap.min.css', 'src/css/main.css']

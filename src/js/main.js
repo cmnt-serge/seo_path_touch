@@ -4,8 +4,8 @@
  * #mapInfo #mapInfo-title
  */
 let map;
-document.addEventListener('DOMContentLoaded', initParameters())
-
+initParameters();
+console.log('loulo')
 let menu = createAndRenderMenu();
 let dirDiv = createDirectionDiv(menu);
 let actionDiv =createActionDiv(menu);
@@ -137,10 +137,10 @@ function createDeleteDiv(menu){
 
 function initParameters(){
     console.log('loulou', window)
-    map = window.dtMap;
-    console.log(map)
     let head = document.querySelector('head');
     head.insertAdjacentElement('afterbegin', cssLink('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'));
+    head.insertAdjacentElement('beforeend', injectJS(chrome.runtime.getURL('src/js/main.js')));
+    console.log(map)
     //head.insertAdjacentElement('afterbegin',cssLink('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css'));
     //head.insertAdjacentElement('beforeend',cssLink(chrome.runtime.getURL('src/css/main.css')));
 }
@@ -152,4 +152,12 @@ function cssLink(link){
     cssLink.href = link
     
     return cssLink;
+}
+
+function injectJS(link){
+    let jsLink = document.createElement('script');
+    jsLink.type = 'text/javascript';
+    jsLink.href = link
+    
+    return jsLink;
 }

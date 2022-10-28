@@ -18,10 +18,13 @@
       "activeTab",
       "scripting",
       "declarativeContent",
-      "tabs",
-      "nativeMessaging"
+      "tabs"
     ],
     "web_accessible_resources": [
+      {
+        "resources": ["src/js/main.js"],
+        "matches": ["https://www.dofus-touch-map.com/*"]
+      },
       {
         "resources": ["src/css/main.css"],
         "matches": ["https://www.dofus-touch-map.com/*"]
@@ -33,6 +36,5 @@
    ],
     "host_permissions": ["https://www.dofus-touch-map.com/"],
     "icons": {
-
     }
 }
