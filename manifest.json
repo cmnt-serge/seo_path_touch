@@ -18,11 +18,16 @@
       "activeTab",
       "scripting",
       "declarativeContent",
-      "tabs"
+      "tabs",
+      "nativeMessaging"
     ],
     "web_accessible_resources": [
       {
-        "resources": ["src/js/"],
+        "resources": ["src/css/main.css"],
+        "matches": ["https://www.dofus-touch-map.com/*"]
+      },
+      {
+        "resources": ["assets/*"],
         "matches": ["https://www.dofus-touch-map.com/*"]
       }
    ],

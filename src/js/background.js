@@ -10,7 +10,7 @@ chrome.webNavigation.onCompleted.addListener(({tabId, url}) => {
             });
             chrome.scripting.insertCSS({
                 target: {tabId},
-                files: ['src/css/main.css']
+                files: ['src/css/bootstrap.min.css', 'src/css/main.css']
             })
         } else {
             console.log('I CANTTTT')
