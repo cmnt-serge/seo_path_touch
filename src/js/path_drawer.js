@@ -15,17 +15,26 @@ dtMap.on('click', (e) => {
     console.log(e.latlng)
     console.log(getDtCoordFromMapCoord(e.latlng.lng, e.latlng.lat))
 
-    createArrow()
+    createArrow(getDtCoordFromMapCoord(e.latlng.lng, e.latlng.lat))
 })
 
-function createArrow(moves = null, directions = null){
-    let arrow = SVG().addTo('#dofus-maps-menu').size(300, 300)
-    let rect = arrow.rect(50, 100).attr({ fill: '#f06' })
+function createArrow(coord, moves = null, directions = null){
+    let arrowImg = SVG().addTo('#dofus-maps-menu').size(150, 150)
+    arrowImg.attr('data-coord', coord)
 
-    return arrow;
+    let rightArrow = arrowImg.path(createRightArrow(arrowImg.width(), arrowImg.height())).attr({fill: "black", stroke:"blue"})
+    // right arrow : arrowImg.path("M 150 150 L 300 150 M 300 150 L 290 140 M 300 150 L 290 160 z").attr({fill: "black", stroke:"blue"})
+    // left arrow : arrowImg.path("M 150 150 L 0 150 M 0 150 L 10 140 M 0 150 L 10 160 z").attr({fill: "black", stroke:"blue"})
+    // top arrow : arrowImg.path("M 150 150 L 150 0 M 150 0 L 140 10 M 150 0 L 160 10 z").attr({fill: "black", stroke:"blue"})
+    // bot arrow : arrowImg.path("M 150 150 L 150 300 M 150 300 L 140 290 M 150 300 L 160 290 z").attr({fill: "black", stroke:"blue"})
+
+
+    return arrowImg;
 }
 
-
+function createRightArrow(width, height){
+    return `M ${width / 2} ${height / 2} L ${width} ${height / 2} M ${width} ${height / 2} L ${width - 10} ${height / 2 - 10} M ${width} ${height / 2} L ${width - 10} ${height / 2 +10}`;
+} 
 
 
 
