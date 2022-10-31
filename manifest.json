@@ -20,9 +20,21 @@
       "declarativeContent",
       "tabs"
     ],
+    "content_security_policy": {
+      "script-src": "self " ,
+      "object-src": "self"
+    },
     "web_accessible_resources": [
       {
         "resources": ["src/js/main.js"],
+        "matches": ["https://www.dofus-touch-map.com/*"]
+      },
+      {
+        "resources": ["src/js/plugin/svg.min.js"],
+        "matches": ["https://www.dofus-touch-map.com/*"]
+      },
+      {
+        "resources": ["src/js/path_drawer.js"],
         "matches": ["https://www.dofus-touch-map.com/*"]
       },
       {

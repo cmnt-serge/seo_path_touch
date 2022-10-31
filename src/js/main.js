@@ -3,9 +3,7 @@
  * #mapCoordinates .coord => donne les coordonnées actuel où la souris se trouve
  * #mapInfo #mapInfo-title
  */
-let map;
 initParameters();
-console.log('loulo')
 let menu = createAndRenderMenu();
 let dirDiv = createDirectionDiv(menu);
 let actionDiv =createActionDiv(menu);
@@ -136,13 +134,11 @@ function createDeleteDiv(menu){
 }
 
 function initParameters(){
-    console.log('loulou', window)
+    //console.log('loulou', window)
     let head = document.querySelector('head');
     head.insertAdjacentElement('afterbegin', cssLink('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'));
-    head.insertAdjacentElement('beforeend', injectJS(chrome.runtime.getURL('src/js/main.js')));
-    console.log(map)
-    //head.insertAdjacentElement('afterbegin',cssLink('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css'));
-    //head.insertAdjacentElement('beforeend',cssLink(chrome.runtime.getURL('src/css/main.css')));
+    head.insertAdjacentElement('afterbegin', injectJS('src/js/plugin/svg.min.js'));
+    head.insertAdjacentElement('afterbegin', injectJS('src/js/path_drawer.js'));
 }
 
 function cssLink(link){
@@ -154,10 +150,14 @@ function cssLink(link){
     return cssLink;
 }
 
-function injectJS(link){
+function injectJS(link,isCdn = false, jsContent = null){
     let jsLink = document.createElement('script');
     jsLink.type = 'text/javascript';
-    jsLink.href = link
-    
+
+    jsLink.src = isCdn ? link : chrome.runtime.getURL(link)
+
+    if(jsContent)
+        jsLink.innerHTML = jsContent
+
     return jsLink;
 }

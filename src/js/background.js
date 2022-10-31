@@ -4,10 +4,22 @@ chrome.webNavigation.onCompleted.addListener(({tabId, url}) => {
         origins: ['https://www.dofus-touch-map.com/']
     }, (granted) => {
         if (granted) {
-            /* chrome.scripting.executeScript({
+            chrome.scripting.executeScript({
                 target: {tabId},
                 files: ['src/js/main.js']
-            }); */
+            });
+            /*chrome.scripting.executeScript({
+                target: {tabId},
+                func: function(){
+                    let script = this.document.createElement('script');
+                    script.type = 'text/javascript';
+                    console.log(script)
+                    script.src = chrome.runtime.getURL('src/js/main.js')
+                    this.document.querySelector('head').insertAdjacentElement('afterbegin', script);
+
+                    console.log(this)
+                }
+            })*/
             chrome.scripting.insertCSS({
                 target: {tabId},
                 files: ['src/css/bootstrap.min.css', 'src/css/main.css']
